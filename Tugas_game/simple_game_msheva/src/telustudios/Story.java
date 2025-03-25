@@ -2,6 +2,8 @@ package telustudios;
 
 import java.util.Scanner;
 
+
+
 public class Story {
     private Scene startScene;
     private Character player;

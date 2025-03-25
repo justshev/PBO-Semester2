@@ -14,11 +14,15 @@ public class Scene {
     private int XPA;
     private int XPB;
     private int XPC;
+    private String itemA;
+    private String itemB;
+    private String itemC;
+
 
     public Scene(String description, 
-                 String choiceA, Scene nextSceneA, int damageA, int XPA,
-                 String choiceB, Scene nextSceneB, int damageB, int XPB,
-                 String choiceC, Scene nextSceneC, int damageC, int XPC) {
+                 String choiceA, Scene nextSceneA, int damageA, int XPA, String itemA,
+                 String choiceB, Scene nextSceneB, int damageB, int XPB, String itemB,
+                 String choiceC, Scene nextSceneC, int damageC, int XPC,String itemC) {
         this.description = description;
         this.choiceA = choiceA;
         this.choiceB = choiceB;
@@ -32,7 +36,12 @@ public class Scene {
         this.XPA = XPA;
         this.XPB = XPB;
         this.XPC = XPC;
+        this.itemA = itemA;
+        this.itemB = itemB;
+        this.itemC = itemC;
     }
+
+
 
     public void displayScene() {
         System.out.println("\n" + description);
@@ -59,6 +68,10 @@ public class Scene {
                     System.out.println("Kamu mendapatkan " + XPA + " pengalaman!");
                     player.addXP(XPA);
                 }
+                if (itemA != null) {
+                    System.out.println("Kamu mendapatkan " + itemA + "!");
+                    player.setItem(itemA);
+                }
                 return nextSceneA;
             case "B":
                 if (damageB > 0) {
@@ -69,6 +82,10 @@ public class Scene {
                     System.out.println("Kamu mendapatkan " + XPB + " pengalaman!");
                     player.addXP(XPB);
                 }
+                if (itemB != null) {
+                    System.out.println("Kamu mendapatkan " + itemB + "!");
+                    player.setItem(itemB);
+                }
                 return nextSceneB;
             case "C":
                 if (damageC > 0) {
@@ -78,6 +95,10 @@ public class Scene {
                 if (XPC > 0) {
                     System.out.println("Kamu mendapatkan " + XPC + " pengalaman!");
                     player.addXP(XPC);
+                }
+                if (itemC != null) {
+                    System.out.println("Kamu mendapatkan " + itemC + "!");
+                    player.setItem(itemC);
                 }
                 return nextSceneC;
             default:
