@@ -72,6 +72,10 @@ public class Scene {
                     System.out.println("Kamu mendapatkan " + itemA + "!");
                     player.setItem(itemA);
                 }
+                if ( itemA == null ) {
+                    System.out.println("Kamu tidak mendapatkan item apapun!");
+                    return this;
+                }
                 return nextSceneA;
             case "B":
                 if (damageB > 0) {
@@ -106,7 +110,6 @@ public class Scene {
         }
     }
 
-    // Getter untuk memeriksa apakah scene ini adalah scene akhir
     public boolean isEndScene() {
         return nextSceneA == null && nextSceneB == null && nextSceneC == null;
     }
