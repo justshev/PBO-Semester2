@@ -7,13 +7,17 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         
-        // Membuat karakter pemain
-        System.out.println("Selamat datang di Petualangan Hutan Misteri!");
-        System.out.print("Masukkan nama karaktermu: ");
+        // BUat karakter dlu cuy
+        System.out.println("Selamat datang di Petualangan Hutan Jawa!");
+        System.out.print("Masukkan nama karaktermu bro: ");
         String playerName = scanner.nextLine();
+        if (playerName.isEmpty()) {
+            playerName = "Anomali gaada nama";
+        }
+        System.out.println("Halo " + playerName + "! Kamu akan memulai petualangan di hutan misteri.");
         Character player = new Character(playerName, 100);
         
-        // Inisialisasi scene-scene (harus dibuat dari bawah ke atas karena reference)
+
         // Scene akhir
         Scene endingGood = new Scene(
             "Akhirnya kamu berhasil menemukan jalan keluar dari hutan misteri ini!\n" +
@@ -66,7 +70,7 @@ public class Main {
             "Jalan setapak ke kiri menuju ke persawahan, lurus menuju ke hutan,\n" +
             "dan jalan ke kanan menuju area terlarang.",
             "Ambil jalan ke kiri menuju persawahan", scene7, 0, 15,null,
-            "Lanjutkan lurus menuju perbukitan", endingBad, 25, 5,null,
+            "Lanjutkan lurus menuju perbukitan", scene7, 25, 5,null,
             "Ambil jalan ke kanan menuju area terlarang", scene8, 0, 25,null
         );
         
@@ -92,17 +96,17 @@ public class Main {
         Scene scene3 = new Scene(
             "Tiba tiba kamu melihat orang berkepala sapi yang muncul dari dalam rumah tersebut.\n" +
             "Kamu pun terkaget dan ingin lari dari tempat tersebut.",
-            "Berjalan menyusuri tepi padang rumput menggunakan obor", scene4, 0, 20, null,
+            "Berjalan menyusuri tepi padang rumput dan gunakan item medkit", scene4, 0, 20, "Medkit",
             "Ambil jalan pintas melintasi padang rumput", scene4, 19, 15,null,
             "Beristirahat sejenak dan mengamati sekitar", scene4, 0, 5,null
         );
         
-        // Scene 2 - Gua
+        // Scene 2 - Gubuk Kecil
         Scene scene2 = new Scene(
             "Kamu menemukan sebuah gubuk kecil seperti rumah warga akan tetapi , dari dalam terdengar suara aneh.\n" +
             "Kamu menemukan beberapa item untuk membantu kamu dalam petualangan ini.",
             "Cuek dan tidak mau mengambil item", scene3, 15, 10, null,
-            "Ambil Item obor yang ada di depan gubuk", scene3, 0, 20,"Obor",
+            "Ambil Item Celurit dan gunakan item ", scene3, 0, 20,"Celurit",
             "Mencoba menggunakan tangan kosong", scene3, 10, 20, null
         );
         
@@ -110,9 +114,9 @@ public class Main {
         Scene scene1 = new Scene(
             "Kamu terbangun di tengah hutan lebat yang terletak di dearah Jawa. Kamu kaget dengan suasana hutan yang sangat mencekam.\n" +
             "Sekarang kamu ingin bergerak dan memutuskan jalan mana yang akan kamu pilih.",
-            "Ambil jalan setapak ke kiri yang tampak gelap", scene2, 15, 10, null,
-            "Ambil jalan setapak ke tengah yang lebih lebar", scene3, 0, 5, null,
-            "Ambil jalan setapak ke kanan yang menuju ke atas bukit", scene4, 10, 15, null
+            "Ambil obor dan terus jalan", scene2, 15, 10, "Obor",
+            "Ambil jalan setapak ke tengah menuju perumahan", scene3, 0, 5, null,
+            "Ambil jalan setapak ke kanan yang menuju ke Sabana", scene4, 10, 15, null
         );
         
         // Memulai cerita

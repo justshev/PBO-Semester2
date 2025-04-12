@@ -16,7 +16,7 @@ public class Story {
     }
 
     public void start() {
-        System.out.println("=== PETUALANGAN " + player.getName().toUpperCase() + " ===");
+        System.out.println("=== PETUALANGAN HUTAN PULAU JAWA " + player.getName().toUpperCase() + " ===");
         System.out.println("Ketik 'A', 'B', atau 'C' untuk membuat pilihan.");
         System.out.println("Ketik 'INFO' untuk melihat status karakter.");
         System.out.println("Ketik 'QUIT' untuk keluar dari permainan.");
@@ -31,7 +31,7 @@ public class Story {
             currentScene.displayScene();
 
             if (currentScene.isEndScene()) {
-                System.out.println("\nPetualangan telah selesai!");
+                System.out.println("\nPetualangan Berakhir!");
                 displayPlayerInfo();
                 break;
             }
@@ -42,7 +42,7 @@ public class Story {
             if (input.equals("QUIT")) {
                 System.out.println("Terima kasih telah bermain!");
                 break;
-            } else if (input.equals("INFO")) {
+            } else if (input.equals( "INFO")) {
                 displayPlayerInfo();
                 continue;
             }

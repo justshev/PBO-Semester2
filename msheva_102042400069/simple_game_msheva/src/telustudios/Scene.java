@@ -60,22 +60,28 @@ public class Scene {
     public Scene makeChoice(String choice, Character player) {
         switch (choice.toUpperCase()) {
             case "A":
+           
                 if (damageA > 0) {
                     System.out.println("Kamu mengalami " + damageA + " damage.");
                     player.takeDamage(damageA);
                 }
                 if (XPA > 0) {
-                    System.out.println("Kamu mendapatkan " + XPA + " pengalaman!");
+                    System.out.println("Kamu mendapatkan " + XPA + " XP!");
                     player.addXP(XPA);
                 }
                 if (itemA != null) {
                     System.out.println("Kamu mendapatkan " + itemA + "!");
                     player.setItem(itemA);
                 }
-                if ( itemA == null ) {
-                    System.out.println("Kamu tidak mendapatkan item apapun!");
-                    return this;
-                }
+
+                if (player.getItem().equals("Medkit")){
+                    System.out.println("Kamu menggunakan Medkit untuk menyembuhkan diri!");
+                    player.takeDamage(-20); // Menyembuhkan 20 damage
+                    System.out.println("Kesehatanmu sekarang: " + player.getHealth());
+                    player.setItem("none"); // Menghapus item setelah digunakan
+                } 
+              
+                
                 return nextSceneA;
             case "B":
                 if (damageB > 0) {
@@ -83,12 +89,18 @@ public class Scene {
                     player.takeDamage(damageB);
                 }
                 if (XPB > 0) {
-                    System.out.println("Kamu mendapatkan " + XPB + " pengalaman!");
+                    System.out.println("Kamu mendapatkan " + XPB + " XP!");
                     player.addXP(XPB);
                 }
                 if (itemB != null) {
                     System.out.println("Kamu mendapatkan " + itemB + "!");
                     player.setItem(itemB);
+                } 
+                if (player.getItem().equals("Celurit")){
+                    System.out.println("Kamu menggunakan Celurit untuk menyerang musuh dan mendapatlkan tambahan XP!");
+                    player.addXP(XPA+40);; 
+                    System.out.println("XP sekarang: " + player.getXP());
+                    player.setItem("none"); // Menghapus item setelah digunakan
                 }
                 return nextSceneB;
             case "C":
@@ -97,7 +109,7 @@ public class Scene {
                     player.takeDamage(damageC);
                 }
                 if (XPC > 0) {
-                    System.out.println("Kamu mendapatkan " + XPC + " pengalaman!");
+                    System.out.println("Kamu mendapatkan " + XPC + " XP!");
                     player.addXP(XPC);
                 }
                 if (itemC != null) {
